@@ -21,7 +21,9 @@
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js,.jsx,.ts,.tsx",
     "dev": "vite --open",
     "preview": "vite preview",
-    "coverage": "vitest run --coverage --watch=false"
+    "coverage": "vitest run --coverage --watch=false",
+    "fix:styles": "npx stylelint --fix './src/**/*.css'",
+    "fix": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js,.jsx,.ts,.tsx --fix ./src"
   },
   "browserslist": {
     "production": [
