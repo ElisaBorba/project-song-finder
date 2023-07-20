@@ -1,40 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../../services/userAPI';
-import { Carregando } from '../../components/Carregando';
-
-type LoginProps = {
-  loginValues: LoginValuesType,
-  setLoginValues: (prop: LoginValuesType) => void,
-  handleSubmit: () => void,
-};
+import Carregando from '../../components/Carregando';
 
 const INITIAL_LOGIN_STATE = {
   userName: '',
 };
 
-export type LoginValuesType = {
+export type LoginValueType = {
   userName?: string | undefined,
 };
 
-function Login(props: LoginProps) {
-  const { handleSubmit } = props;
-
-  const [loginValues, setLoginValues] = useState<LoginValuesType>(INITIAL_LOGIN_STATE);
-
-  const [loading, setLoading] = useState(true);
-
+function Login() {
+  const [loginValues, setLoginValues] = useState<LoginValueType>(INITIAL_LOGIN_STATE);
+  const [loading, setLoading] = useState(false);
   const { userName } = loginValues;
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    createUser({ name: String(userName) });
-  };
-
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    handleSubmit();
-    createUser({ name: String(userName) });
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    try {
+      setLoading(true);
+      await createUser({ name: String(userName) });
+      setLoading(false);
+      navigate('/search');
+    } catch (error: any) {
+      setLoading(false);
+      throw new Error(`Error creating user: ${error.message}`);
+    }
   };
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,32 +48,25 @@ function Login(props: LoginProps) {
     return valid;
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-      navigate('/search');
-    }, 2000);
-  }, []);
-
   return (
     <form onSubmit={ onSubmit }>
       {loading ? (<Carregando />) : (
         <div>
           <label htmlFor="userName">
-            Login
+            Nome:
             <input
               data-testid="login-name-input"
               type="text"
               name="userName"
               value={ userName }
               onChange={ onChange }
+              placeholder="Nome"
               required
             />
           </label>
           <button
             data-testid="login-submit-button"
             disabled={ !validateLogin() }
-            onClick={ handleClick }
             type="submit"
           >
             Entrar
