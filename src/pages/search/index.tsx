@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import searchAlbumsAPI, { AlbumType } from '../../services/searchAlbumsAPI';
+import searchAlbumsAPI from '../../services/searchAlbumsAPI';
+import { AlbumType } from '../../types';
 
 const INITIAL_SEARCH_STATE = {
   search: '',
@@ -12,21 +12,25 @@ export type SearchValueType = {
 
 function Search() {
   const [searchValue, setSearchValue] = useState<SearchValueType>(INITIAL_SEARCH_STATE);
+  const [inputValue, setInputValue] = useState('');
+  const [loading, setLoading] = useState(false);
   const { search } = searchValue;
   const [albums, setAlbums] = useState<AlbumType[]>([]);
-  const [showResult, setShowResult] = useState(false);
-  const navigate = useNavigate();
+  const [showAlbum, setShowAlbum] = useState(false);
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
+      setLoading(true);
       const albumsResult: AlbumType[] = await searchAlbumsAPI(String(search));
       console.log('Álbuns encontrados:', albumsResult);
 
+      setLoading(false);
       setAlbums(albumsResult);
       setSearchValue(INITIAL_SEARCH_STATE);
-      setShowResult(true);
+      setShowAlbum(true);
     } catch (error: any) {
+      setLoading(false);
       throw new Error('Nenhum álbum foi encontrado');
     }
   };
@@ -37,7 +41,7 @@ function Search() {
       ...searchValue,
       [name]: value,
     });
-
+    setInputValue(value);
     validateSearch();
   };
 
@@ -52,39 +56,45 @@ function Search() {
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={ onSubmit }>
         <label htmlFor="search">
           <input
             data-testid="search-artist-input"
             type="text"
             name="search"
             placeholder="Nome do Artista"
-            value={search}
-            onChange={onChange}
+            value={ search }
+            onChange={ onChange }
             required
           />
         </label>
         <button
           data-testid="search-artist-button"
           type="submit"
-          disabled={!validateSearch()}
+          disabled={ !validateSearch() }
         >
           Pesquisar
         </button>
       </form>
 
-      {showResult && (
-        <div>
-          <h2>Resultado de álbuns de: {search}</h2>
-          <ul>
-            {albums.map((album) => (
-              <li key={album.artistId}>
-                <p>{album.collectionName}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {showAlbum && (albums.length > 0
+        ? (
+          <div>
+            <h2>
+              Resultado de álbuns de:
+              {' '}
+              {inputValue}
+            </h2>
+            <ul>
+              {albums.map((album) => (
+                <li key={ album.collectionId }>
+                  <h2>{album.collectionName}</h2>
+                  <p>{album.artistName}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (<h3>Nenhum álbum foi encontrado </h3>))}
     </div>
   );
 }
