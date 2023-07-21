@@ -25,8 +25,6 @@ function Search() {
     try {
       setLoading(true);
       const albumsResult: AlbumType[] = await searchAlbumsAPI(String(search));
-      console.log('Álbuns encontrados:', albumsResult);
-
       setLoading(false);
       setAlbums(albumsResult);
       setSearchValue(INITIAL_SEARCH_STATE);
