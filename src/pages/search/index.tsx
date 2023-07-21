@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import searchAlbumsAPI from '../../services/searchAlbumsAPI';
 import { AlbumType } from '../../types';
+import AlbumCard from '../../components/AlbumCard';
+import './search.css';
 
 const INITIAL_SEARCH_STATE = {
   search: '',
@@ -78,23 +80,8 @@ function Search() {
       </form>
 
       {showAlbum && (albums.length > 0
-        ? (
-          <div>
-            <h2>
-              Resultado de álbuns de:
-              {' '}
-              {inputValue}
-            </h2>
-            <ul>
-              {albums.map((album) => (
-                <li key={ album.collectionId }>
-                  <h2>{album.collectionName}</h2>
-                  <p>{album.artistName}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : (<h3>Nenhum álbum foi encontrado </h3>))}
+        ? (<AlbumCard inputValue={ inputValue } albums={ albums } />)
+        : (<h3>Nenhum álbum foi encontrado </h3>))}
     </div>
   );
 }

@@ -17,7 +17,7 @@ function Login() {
   const { userName } = loginValues;
   const navigate = useNavigate();
 
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async () => {
     try {
       setLoading(true);
       await createUser({ name: String(userName) });
