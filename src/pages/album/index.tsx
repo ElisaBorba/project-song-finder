@@ -8,29 +8,32 @@ function Album() {
   const [loading, setLoading] = useState(true);
   const [albumData, setAlbumData] = useState<AlbumType>();
   const [songs, setSongs] = useState<(AlbumType | SongType)[]>();
-  const { id } = useParams();
+  const { id } = useParams<{ id:string }>();
+  console.log('id', id);
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const artistData = await getMusics(String(id));
-        console.log('artistData', artistData);
+      // try {
+      const artistData = await getMusics(id as string);
+      const [albumData, ...musicListData] = albumData;
 
-        console.log('artistData[0]', artistData[0]);
-        setAlbumData(artistData[0]);
+      console.log('artistData', artistData);
 
-        setSongs(artistData.slice(1));
-        console.log('artistData.slice(1)', artistData.slice(1));
+      console.log('artistData[0]', artistData[0]);
+      setAlbumData(artistData[0]);
 
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-        throw new Error('Erro, API não resolvida');
-      }
+      setSongs(artistData.slice(1));
+      console.log('artistData.slice(1)', artistData.slice(1));
+
+      setLoading(false);
+      // } catch (error) {
+      //   setLoading(false);
+      //   throw new Error('Erro, API não resolvida');
+      // }
     };
 
     fetchData();
-  }, []);
+  }, [id]);
 
   return (
     <div>
