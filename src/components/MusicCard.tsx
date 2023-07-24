@@ -1,6 +1,6 @@
 type SongCardProps = {
-  trackName: string,
   previewUrl: string,
+  trackName: string,
 };
 
 function MusicCard({ trackName, previewUrl }:SongCardProps) {
