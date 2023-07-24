@@ -12,13 +12,13 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={ <Layout /> }>
-        <Route index element={ <Login /> } />
         <Route path="/search" element={ <Search /> } />
         <Route path="/album/:id" element={ <Album /> } />
         <Route path="/favorites" element={ <Favorites /> } />
         <Route path="/profile" element={ <Profile /> } />
+        <Route path="/*" element={ <NotFound /> } />
       </Route>
-      <Route path="/*" element={ <NotFound /> } />
+      <Route index element={ <Login /> } />
     </Routes>
   );
 }

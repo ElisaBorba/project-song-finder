@@ -3,6 +3,7 @@ import searchAlbumsAPI from '../../services/searchAlbumsAPI';
 import { AlbumType } from '../../types';
 import AlbumCard from '../../components/AlbumCard';
 import './search.css';
+import Carregando from '../../components/Carregando';
 
 const INITIAL_SEARCH_STATE = {
   search: '',
@@ -53,6 +54,10 @@ function Search() {
     }
     return valid;
   };
+
+  if (loading) {
+    <Carregando />;
+  }
 
   return (
     <div>

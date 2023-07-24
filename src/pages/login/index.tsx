@@ -8,7 +8,7 @@ const INITIAL_LOGIN_STATE = {
 };
 
 export type LoginValueType = {
-  userName?: string | undefined,
+  userName: string | undefined,
 };
 
 function Login() {
@@ -18,15 +18,15 @@ function Login() {
   const navigate = useNavigate();
 
   const onSubmit = async () => {
-    try {
-      setLoading(true);
-      await createUser({ name: String(userName) });
-      setLoading(false);
-      navigate('/search');
-    } catch (error: any) {
-      setLoading(false);
-      throw new Error(`Error creating user: ${error.message}`);
-    }
+    // try {
+    setLoading(true);
+    await createUser({ name: String(userName) });
+    setLoading(false);
+    navigate('/search');
+    // } catch (error: any) {
+    //   setLoading(false);
+    //   throw new Error('Error creating user');
+    // }
   };
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
