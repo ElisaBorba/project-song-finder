@@ -3,46 +3,63 @@ import { useParams } from 'react-router-dom';
 import getMusics from '../../services/musicsAPI';
 import { SongType, AlbumType } from '../../types';
 import Carregando from '../../components/Carregando';
+import MusicCard from '../../components/MusicCard';
 
 function Album() {
   const [loading, setLoading] = useState(true);
   const [albumData, setAlbumData] = useState<AlbumType>();
   const [songs, setSongs] = useState<(AlbumType | SongType)[]>();
   const { id } = useParams<{ id:string }>();
-  console.log('id', id);
 
   useEffect(() => {
     const fetchData = async () => {
-      // try {
-      const artistData = await getMusics(id as string);
-      const [albumData, ...musicListData] = albumData;
-
-      console.log('artistData', artistData);
-
-      console.log('artistData[0]', artistData[0]);
-      setAlbumData(artistData[0]);
-
-      setSongs(artistData.slice(1));
-      console.log('artistData.slice(1)', artistData.slice(1));
-
-      setLoading(false);
-      // } catch (error) {
-      //   setLoading(false);
-      //   throw new Error('Erro, API não resolvida');
-      // }
+      try {
+        const artistData = await getMusics(id as string);
+        setAlbumData(artistData[0]);
+        setSongs(artistData.slice(1));
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        throw new Error('Erro, API não resolvida');
+      }
     };
 
     fetchData();
   }, [id]);
 
+  if (loading) {
+    <Carregando />;
+  }
+
   return (
     <div>
-      {loading ? (
-        <Carregando />
-      ) : (
+      {albumData && (
         <div>
-          blabla
-          {/* { albumData } */}
+          <h1 data-testid="artist-name">
+            {albumData.artistName}
+          </h1>
+          <h2 data-testid="album-name">
+            {albumData.collectionName}
+          </h2>
+          <img
+            src={ albumData.artworkUrl100 }
+            alt={ `Álbum: ${albumData.collectionName}` }
+          />
+        </div>
+      )}
+
+      {songs && (
+        <div>
+          {songs.map((song) => ('trackId' in song ? (
+
+            <MusicCard
+              key={ (song as SongType).trackId }
+              previewUrl={ (song as SongType).previewUrl }
+              trackName={ (song as SongType).trackName }
+            />
+          ) : (
+            null
+          )))}
         </div>
       )}
     </div>
