@@ -1,0 +1,17 @@
+header {
+  align-items: center;
+  background-color: rgb(49, 46, 46);
+  color: white;
+  display: flex;
+  height: 100px;
+  justify-content: space-around;
+  text-decoration: none;
+  width: 100%;
+}
+
+.navlink-style {
+  color: white;
+
+  /* padding-left: 150px; */
+  text-decoration: none;
+}

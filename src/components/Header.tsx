@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Carregando from './Carregando';
 import { getUser } from '../services/userAPI';
 import { UserType } from '../types';
+import './comp.css';
 
 function Header() {
   const [loading, setLoading] = useState(true);
@@ -33,13 +34,25 @@ function Header() {
   return (
     <div>
       <header data-testid="header-component">
-        <NavLink data-testid="link-to-search" to="/search">
+        <NavLink
+          className="navlink-style"
+          data-testid="link-to-search"
+          to="/search"
+        >
           PESQUISAR
         </NavLink>
-        <NavLink data-testid="link-to-favorites" to="/favorites">
+        <NavLink
+          className="navlink-style"
+          data-testid="link-to-favorites"
+          to="/favorites"
+        >
           FAVORITOS
         </NavLink>
-        <NavLink data-testid="link-to-profile" to="/profile">
+        <NavLink
+          className="navlink-style"
+          data-testid="link-to-profile"
+          to="/profile"
+        >
           PERFIL
         </NavLink>
         {userData && (

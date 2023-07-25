@@ -1,0 +1,49 @@
+body {
+  align-items: center;
+  background-image: url(../../images/wepik-export-20230725045048jFeM.png);
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+}
+
+.login-container {
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 10px rgb(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  height: 530px;
+  justify-content: center;
+  margin-top: 200px;
+  width: 500px;
+}
+
+.input-login {
+  border-radius: 100px;
+  font-weight: 500;
+  height: 40px;
+  width: 400px;
+}
+
+.btn-login {
+  background-color: rgb(214, 203, 203);
+  border-radius: 100px;
+  cursor: pointer;
+  font-weight: 900;
+  height: 40px;
+  margin-top: 15px;
+  width: 400px;
+}
+
+/* arrumar */
+.btn-login :hover:enabled {
+  background-color: black;
+}
+
+.login-container img {
+  align-items: center;
+  display: flex;
+  margin-left: 50px;
+  width: 300px;
+}

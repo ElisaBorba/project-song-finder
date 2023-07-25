@@ -1,14 +1,10 @@
 import { useState } from 'react';
 import checkedHeart from '../images/checked_heart.png';
 import emptyHeart from '../images/empty_heart.png';
+import { SongType } from '../types';
+import { addSong, removeSong } from '../services/favoriteSongsAPI';
 
-type SongCardProps = {
-  trackId: number,
-  previewUrl: string,
-  trackName: string,
-};
-
-function MusicCard({ trackName, previewUrl, trackId }:SongCardProps) {
+function MusicCard({ trackName, previewUrl, trackId }:SongType) {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

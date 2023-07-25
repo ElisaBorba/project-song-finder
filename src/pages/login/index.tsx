@@ -2,72 +2,70 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../../services/userAPI';
 import Carregando from '../../components/Carregando';
-
-const INITIAL_LOGIN_STATE = {
-  userName: '',
-};
-
-export type LoginValueType = {
-  userName: string | undefined,
-};
+import TrybeTunes from '../../images/TRYBETUNES.gif';
+import './login.css';
 
 function Login() {
-  const [loginValues, setLoginValues] = useState<LoginValueType>(INITIAL_LOGIN_STATE);
+  const [loginValues, setLoginValues] = useState('');
   const [loading, setLoading] = useState(false);
-  const { userName } = loginValues;
+
   const navigate = useNavigate();
 
-  const onSubmit = async () => {
-    try {
-      setLoading(true);
-      await createUser({ name: String(userName) });
-      setLoading(false);
-      navigate('/search');
-    } catch (error: any) {
-      setLoading(false);
-      throw new Error('Error creating user');
-    }
-  };
-
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setLoginValues({
-      ...loginValues,
-      [name]: value,
-    });
-
+    setLoginValues(event.target.value);
     validateLogin();
   };
 
   const validateLogin = (): boolean => {
     let valid = true;
 
-    if (String(userName).length < 3) {
+    if (String(loginValues).length < 3) {
       valid = false;
     }
     return valid;
   };
 
+  const onSubmit = async () => {
+    // try {
+    setLoading(true);
+
+    if (loginValues) {
+      await createUser({ name: loginValues });
+      console.log('entrou');
+      setLoading(false);
+      navigate('/search');
+    }
+    // } catch (error: any) {
+    //   setLoading(false);
+    //   throw new Error('Error creating user');
+    // }
+  };
+
   return (
     <form onSubmit={ onSubmit }>
       {loading ? (<Carregando />) : (
-        <div>
+        <div className="login-container">
           <label htmlFor="userName">
-            Nome:
+            <img
+              src={ TrybeTunes }
+              alt="TrybeTunes logo"
+            />
             <input
               data-testid="login-name-input"
               type="text"
               name="userName"
-              value={ userName }
+              value={ loginValues }
               onChange={ onChange }
-              placeholder="Nome"
+              placeholder="                                       Qual o seu nome?"
               required
+              className="input-login"
             />
           </label>
           <button
             data-testid="login-submit-button"
             disabled={ !validateLogin() }
             type="submit"
+            className="btn-login"
           >
             Entrar
           </button>
