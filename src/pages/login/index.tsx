@@ -18,15 +18,15 @@ function Login() {
   const navigate = useNavigate();
 
   const onSubmit = async () => {
-    // try {
-    setLoading(true);
-    await createUser({ name: String(userName) });
-    setLoading(false);
-    navigate('/search');
-    // } catch (error: any) {
-    //   setLoading(false);
-    //   throw new Error('Error creating user');
-    // }
+    try {
+      setLoading(true);
+      await createUser({ name: String(userName) });
+      setLoading(false);
+      navigate('/search');
+    } catch (error: any) {
+      setLoading(false);
+      throw new Error('Error creating user');
+    }
   };
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -56,6 +56,7 @@ function Album() {
               key={ (song as SongType).trackId }
               previewUrl={ (song as SongType).previewUrl }
               trackName={ (song as SongType).trackName }
+              trackId={ (song as SongType).trackId }
             />
           ) : (
             null

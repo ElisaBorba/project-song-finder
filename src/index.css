@@ -17,3 +17,11 @@ code {
   display: flex;
   justify-content: center;
 }
+
+.heart-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.heart-checkbox img {
+  cursor: pointer;
+}
