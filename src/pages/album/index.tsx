@@ -15,6 +15,7 @@ function Album() {
     const fetchData = async () => {
       try {
         const artistData = await getMusics(id as string);
+        console.log('artistData', artistData);
         setAlbumData(artistData[0]);
         setSongs(artistData.slice(1));
         setLoading(false);
@@ -27,12 +28,11 @@ function Album() {
     fetchData();
   }, [id]);
 
-  if (loading) {
-    <Carregando />;
-  }
-
   return (
     <div>
+      <div>
+        {loading && <Carregando />}
+      </div>
       {albumData && (
         <div>
           <h1 data-testid="artist-name">
