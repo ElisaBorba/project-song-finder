@@ -23,7 +23,8 @@ function AlbumCard({ inputValue, albums }: AlbumProps) {
               data-id={ album.collectionId }
               data-testid={ `link-to-album-${album.collectionId}` }
             >
-              <h4>{album.collectionName}</h4>
+              <h3>{album.artistName}</h3>
+              <h3>{album.collectionName}</h3>
               <img src={ album.artworkUrl100 } alt={ `Álbum de ${album.artistName}` } />
             </Link>
           </li>

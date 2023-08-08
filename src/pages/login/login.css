@@ -1,7 +1,8 @@
 body {
   align-items: center;
-  background-image: url(../../images/wepik-export-20230725045048jFeM.png);
-  background-repeat: no-repeat;
+
+  /* background-image: url(../../images/wepik-export-20230725045048jFeM.png);
+  background-repeat: no-repeat; */
   display: flex;
   justify-content: center;
 }

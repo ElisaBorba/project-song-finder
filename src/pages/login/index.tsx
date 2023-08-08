@@ -42,7 +42,7 @@ function Login() {
   };
 
   return (
-    <form onSubmit={ onSubmit }>
+    <form>
       {loading ? (<Carregando />) : (
         <div className="login-container">
           <label htmlFor="userName">
@@ -64,7 +64,8 @@ function Login() {
           <button
             data-testid="login-submit-button"
             disabled={ !validateLogin() }
-            type="submit"
+            type="button"
+            onClick={ onSubmit }
             className="btn-login"
           >
             Entrar
