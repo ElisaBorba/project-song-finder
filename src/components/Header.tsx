@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Carregando from './Carregando';
 import { getUser } from '../services/userAPI';
 import { UserType } from '../types';
-import './comp.css';
+import styles from './Header.module.css';
 
 function Header() {
   const [loading, setLoading] = useState(true);
@@ -14,9 +14,6 @@ function Header() {
       try {
         const userFetch = await getUser();
         setUserData(userFetch);
-
-        console.log('userFetch', userFetch);
-
         setLoading(false);
       } catch (error) {
         setLoading(false);
@@ -35,21 +32,21 @@ function Header() {
     <div>
       <header data-testid="header-component">
         <NavLink
-          className="navlink-style"
+          className={ styles.navlinkStyle }
           data-testid="link-to-search"
           to="/search"
         >
           PESQUISAR
         </NavLink>
         <NavLink
-          className="navlink-style"
+          className={ styles.navlinkStyle }
           data-testid="link-to-favorites"
           to="/favorites"
         >
           FAVORITOS
         </NavLink>
         <NavLink
-          className="navlink-style"
+          className={ styles.navlinkStyle }
           data-testid="link-to-profile"
           to="/profile"
         >

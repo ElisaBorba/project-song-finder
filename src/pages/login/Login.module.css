@@ -1,13 +1,11 @@
 body {
   align-items: center;
-
-  /* background-image: url(../../images/wepik-export-20230725045048jFeM.png);
-  background-repeat: no-repeat; */
+  background-color: #6d6c6e;
   display: flex;
   justify-content: center;
 }
 
-.login-container {
+.loginContainer {
   align-items: center;
   background-color: white;
   border-radius: 20px;
@@ -20,14 +18,18 @@ body {
   width: 500px;
 }
 
-.input-login {
-  border-radius: 100px;
-  font-weight: 500;
-  height: 40px;
-  width: 400px;
+.loginContainer input {
+  text-align: center;
 }
 
-.btn-login {
+.loginContainer img {
+  align-items: center;
+  display: flex;
+  margin-left: 50px;
+  width: 300px;
+}
+
+.btnLogin {
   background-color: rgb(214, 203, 203);
   border-radius: 100px;
   cursor: pointer;
@@ -35,16 +37,4 @@ body {
   height: 40px;
   margin-top: 15px;
   width: 400px;
-}
-
-/* arrumar */
-.btn-login :hover:enabled {
-  background-color: black;
-}
-
-.login-container img {
-  align-items: center;
-  display: flex;
-  margin-left: 50px;
-  width: 300px;
 }

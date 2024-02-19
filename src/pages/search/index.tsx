@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import searchAlbumsAPI from '../../services/searchAlbumsAPI';
 import { AlbumType } from '../../types';
 import AlbumCard from '../../components/AlbumCard';
-import './search.css';
+import styles from './Search.module.css';
 import Carregando from '../../components/Carregando';
+import searchBtn from '../../images/searchBtn.svg';
 
 const INITIAL_SEARCH_STATE = {
   search: '',
@@ -61,7 +62,7 @@ function Search() {
 
   return (
     <div>
-      <form onSubmit={ onSubmit }>
+      <form className={ styles.search } onSubmit={ onSubmit }>
         <label htmlFor="search">
           <input
             data-testid="search-artist-input"
@@ -77,8 +78,9 @@ function Search() {
           data-testid="search-artist-button"
           type="submit"
           disabled={ !validateSearch() }
+          className={ styles.searchBtn }
         >
-          Pesquisar
+          <img src={ searchBtn } alt="icon search" />
         </button>
       </form>
 

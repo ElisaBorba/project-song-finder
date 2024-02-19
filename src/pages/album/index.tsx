@@ -15,7 +15,6 @@ function Album() {
     const fetchData = async () => {
       try {
         const artistData = await getMusics(id as string);
-        console.log('artistData', artistData);
         setAlbumData(artistData[0]);
         setSongs(artistData.slice(1));
         setLoading(false);

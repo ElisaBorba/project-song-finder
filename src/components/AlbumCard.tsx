@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AlbumType } from '../types';
+import styles from './AlbumCard.module.css';
 
 type AlbumProps = {
   inputValue: string;
@@ -9,7 +10,7 @@ type AlbumProps = {
 
 function AlbumCard({ inputValue, albums }: AlbumProps) {
   return (
-    <div>
+    <div className={ styles.albumCard }>
       <h2>
         Resultado de álbuns de:
         {' '}

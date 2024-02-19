@@ -2,6 +2,7 @@ import { useState } from 'react';
 import checkedHeart from '../images/checked_heart.png';
 import emptyHeart from '../images/empty_heart.png';
 import { SongType } from '../types';
+import styles from './AlbumCard.module.css';
 
 function MusicCard({ trackName, previewUrl, trackId }:SongType) {
   const [isChecked, setIsChecked] = useState(false);
@@ -11,7 +12,7 @@ function MusicCard({ trackName, previewUrl, trackId }:SongType) {
   };
 
   return (
-    <div>
+    <div className={ styles.musicCard }>
       <h3>{trackName}</h3>
       <audio data-testid="audio-component" src={ previewUrl } controls>
         <track kind="captions" />

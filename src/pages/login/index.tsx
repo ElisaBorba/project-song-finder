@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { createUser } from '../../services/userAPI';
 import Carregando from '../../components/Carregando';
 import TrybeTunes from '../../images/TRYBETUNES.gif';
-import './login.css';
+import styles from './Login.module.css';
 
 function Login() {
   const [loginValues, setLoginValues] = useState('');
@@ -26,25 +26,19 @@ function Login() {
   };
 
   const onSubmit = async () => {
-    // try {
     setLoading(true);
 
     if (loginValues) {
       await createUser({ name: loginValues });
-      console.log('entrou');
       setLoading(false);
       navigate('/search');
     }
-    // } catch (error: any) {
-    //   setLoading(false);
-    //   throw new Error('Error creating user');
-    // }
   };
 
   return (
     <form>
       {loading ? (<Carregando />) : (
-        <div className="login-container">
+        <div className={ styles.loginContainer }>
           <label htmlFor="userName">
             <img
               src={ TrybeTunes }
@@ -56,9 +50,9 @@ function Login() {
               name="userName"
               value={ loginValues }
               onChange={ onChange }
-              placeholder="                                       Qual o seu nome?"
+              placeholder="Qual o seu nome?"
               required
-              className="input-login"
+              className={ styles.inputLogin }
             />
           </label>
           <button
@@ -66,7 +60,7 @@ function Login() {
             disabled={ !validateLogin() }
             type="button"
             onClick={ onSubmit }
-            className="btn-login"
+            className={ styles.btnLogin }
           >
             Entrar
           </button>

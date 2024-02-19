@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/onuava');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,12 +7,14 @@
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Onuava', sans-serif;
+  color: black
+}
+
+body a {
+  text-decoration: none;
+  color: rgb(207, 179, 236);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
 }
 
 code {
@@ -22,6 +26,7 @@ code {
   align-items: center;
   display: flex;
   justify-content: center;
+  background-color: none;
 }
 
 .heart-checkbox input[type="checkbox"] {

@@ -1,0 +1,11 @@
+.musicCard {
+  align-items: center;
+  background-color: rgb(77, 204, 27);
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: column;
+  height: 100px;
+  justify-content: center;
+  padding: 20px;
+  width: 100px;
+}

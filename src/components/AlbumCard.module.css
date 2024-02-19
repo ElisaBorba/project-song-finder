@@ -1,0 +1,34 @@
+.albumCard {
+  align-items: center;
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.albumCard ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 15px;
+}
+
+.albumCard li {
+  align-items: center;
+  background-color: rgb(37, 35, 35);
+  border-radius: 15px;
+  display: flex;
+  flex: 1 0 auto;
+  font-size: 0.7rem;
+  justify-content: center;
+  margin: 10px;
+  max-width: 200px;
+  padding: 5px;
+}
+
+.albumCard img {
+  border-radius: 50%;
+  margin-top: 5px;
+}
