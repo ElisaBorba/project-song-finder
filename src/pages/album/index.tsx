@@ -4,6 +4,7 @@ import getMusics from '../../services/musicsAPI';
 import { SongType, AlbumType } from '../../types';
 import Carregando from '../../components/Carregando';
 import MusicCard from '../../components/MusicCard';
+import styles from './Album.module.css';
 
 function Album() {
   const [loading, setLoading] = useState(true);
@@ -28,12 +29,12 @@ function Album() {
   }, [id]);
 
   return (
-    <div>
+    <div className={ styles.container }>
       <div>
         {loading && <Carregando />}
       </div>
       {albumData && (
-        <div>
+        <div className={ styles.artist }>
           <h1 data-testid="artist-name">
             {albumData.artistName}
           </h1>
@@ -48,9 +49,8 @@ function Album() {
       )}
 
       {songs && (
-        <div>
+        <div className={ styles.musicCard }>
           {songs.map((song) => ('trackId' in song ? (
-
             <MusicCard
               key={ (song as SongType).trackId }
               previewUrl={ (song as SongType).previewUrl }

@@ -29,12 +29,20 @@ body {
   width: 300px;
 }
 
-.btnLogin {
+.loginContainer button {
   background-color: rgb(214, 203, 203);
   border-radius: 100px;
   cursor: pointer;
   font-weight: 900;
   height: 40px;
   margin-top: 15px;
+  width: 400px;
+}
+
+.inputLogin {
+  border-radius: 100px;
+  font-family: Onuava , sans-serif;
+  font-weight: 500;
+  height: 40px;
   width: 400px;
 }
