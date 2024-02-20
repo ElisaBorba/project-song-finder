@@ -11,7 +11,7 @@ ul, li {
 
 .search input {
   background-color: rgb(205, 204, 209);
-  border-color: rgb(205, 204, 209);
+  border-color: rgb(166, 85, 255);
   border-radius: 100px;
   font-family: Onuava , sans-serif;
   font-weight: 500;
@@ -27,7 +27,7 @@ ul, li {
 .searchBtn {
   align-items: center;
   background-color: rgb(205, 204, 209);
-  border: none;
+  border-color: rgb(166, 85, 255);
   border-radius: 100px;
   cursor: pointer;
   margin-left: 10px;

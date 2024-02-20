@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import checkedHeart from '../images/checked_heart.png';
-import emptyHeart from '../images/empty_heart.png';
+import checkedHeart from '../images/heartSolid.png';
+import emptyHeart from '../images/heartRegular.png';
 import { SongType } from '../types';
 import styles from './MusicCard.module.css';
 
