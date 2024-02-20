@@ -7,7 +7,7 @@ import MusicCard from '../../components/MusicCard';
 import styles from './Album.module.css';
 
 function Album() {
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [albumData, setAlbumData] = useState<AlbumType>();
   const [songs, setSongs] = useState<(AlbumType | SongType)[]>();
   const { id } = useParams<{ id:string }>();
@@ -18,9 +18,9 @@ function Album() {
         const artistData = await getMusics(id as string);
         setAlbumData(artistData[0]);
         setSongs(artistData.slice(1));
-        setLoading(false);
+        setIsLoading(false);
       } catch (error) {
-        setLoading(false);
+        setIsLoading(false);
         throw new Error('Erro, API não resolvida');
       }
     };
@@ -30,9 +30,7 @@ function Album() {
 
   return (
     <div className={ styles.container }>
-      <div>
-        {loading && <Carregando />}
-      </div>
+      {isLoading && <Carregando />}
       {albumData && (
         <div className={ styles.artist }>
           <h1 data-testid="artist-name">
@@ -49,7 +47,7 @@ function Album() {
       )}
 
       {songs && (
-        <div className={ styles.musicCard }>
+        <div className={ styles.musicContainer }>
           {songs.map((song) => ('trackId' in song ? (
             <MusicCard
               key={ (song as SongType).trackId }
@@ -57,6 +55,7 @@ function Album() {
               trackName={ (song as SongType).trackName }
               trackId={ (song as SongType).trackId }
             />
+
           ) : (
             null
           )))}
