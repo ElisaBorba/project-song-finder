@@ -1,8 +1,8 @@
 .musicCard {
   align-items: center;
-  background-color: rgb(37, 35, 35);
+  background-color: var(--bg-cards);
   border-radius: 5px;
-  box-shadow: 1px 1px 5px black;
+  box-shadow: var(--box-shadow);
   display: flex;
   flex-direction: row;
   height: 150px;
@@ -10,19 +10,19 @@
   margin: 10px;
   padding: 15px;
   text-align: center;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  text-shadow: var(--text-shadow);
   width: 400px;
 }
 
 .audio {
   align-items: center;
-  color: rgb(166, 85, 255);
+  color: var(--purple);
   display: flex;
   flex-flow: wrap;
   flex-direction: column;
   font-size: 0.7rem;
   justify-content: center;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  text-shadow: var(--text-shadow);
 }
 
 .audio h3 {

@@ -17,7 +17,7 @@
 .artist {
   align-items: center;
   border-radius: 5px;
-  color: black;
+  color: var(--black);
   display: flex;
   flex-flow: wrap;
   flex-direction: column;
@@ -28,7 +28,7 @@
   min-width: 60%;
   padding: 10px;
   text-align: center;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  text-shadow: var(--text-shadow);
 }
 
 .artist img {

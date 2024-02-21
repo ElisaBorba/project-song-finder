@@ -18,7 +18,7 @@
 
 .albumCard li {
   align-items: center;
-  background-color: rgb(37, 35, 35);
+  background-color: var(--bg-cards);
   border-radius: 15px;
   display: flex;
   flex: 1 0 auto;
